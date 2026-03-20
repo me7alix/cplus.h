@@ -296,7 +296,7 @@ void ht_type##_free(ht_type *ht) { \
     for (size_t _ht_idx = 0; (ht)->capacity && _ht_idx < (ht)->capacity; ++_ht_idx) \
         for (ht_type##_node *nodevar = (ht)->arr[_ht_idx]; nodevar; nodevar = nodevar->next)
 
-static inline u32 strhash(char *str) {
+static inline u32 hash_str(char *str) {
     u32 h = 1144290428;
     u8 *p = (u8*)(str);
     while (*p) {
@@ -306,7 +306,7 @@ static inline u32 strhash(char *str) {
     return h;
 }
 
-#define numhash(num) \
+#define hash_num(num) \
     ((u32)((u32)1462847356 * (u32)(num) + 1550508858))
 
 #define hash_combine(h1, h2) \
