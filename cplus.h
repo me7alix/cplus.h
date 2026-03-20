@@ -319,7 +319,7 @@ static inline u32 hash_str(char *str) {
 HT_IMPL(ht_type, char*, value_type) \
 \
 u32 ht_type##_hashf(char* s) { \
-    return strhash(s); \
+    return hash_str(s); \
 } \
 \
 int ht_type##_compare(char* a, char* b) { \
@@ -334,7 +334,7 @@ int ht_type##_compare(char* a, char* b) { \
 HT_IMPL(ht_type, key_type, value_type) \
 \
 u32 ht_type##_hashf(key_type num) { \
-    return numhash(num); \
+    return hash_num(num); \
 } \
 \
 int ht_type##_compare(key_type a, key_type b) { \
