@@ -88,10 +88,9 @@ static inline void* new_impl(size_t size, void *init) {
 
 /* Expression-based pattern matching (switch-like construct) */
 
-static size_t match_ptr = 0;
-static int match_stack[32];
-#define match(v) (match_stack[(match_ptr %= 32, match_ptr++)] = (v))
-#define mwh(v) ((v) == match_stack[match_ptr-1]) ?
+static size_t match_val = 0;
+#define match(v) (match_val = (v))
+#define mwh(v) ((v) == match_val) ?
 #define mth(v) (v) :
 #define mow(v) (v)
 
